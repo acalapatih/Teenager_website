@@ -1,9 +1,11 @@
 <?php
 include '../koneksi.php';
-$assignment_title = $_POST['assignment_title'];
-$done = isset($_POST['done']) ? 1 : 0;
+$subject = $_POST['subject'];
+$description = $_POST['description'];
+$deadline = $_POST['deadline'];
+$status = isset($_POST['status']) ? 1 : 0;
 
-mysqli_query($conn, "INSERT INTO todo VALUES('','$assignment_title','$done')");
+mysqli_query($conn, "INSERT INTO assignment VALUES('','$subject','$description','$deadline','$status')");
 
-header('location:../index.html');
+header('location:../index.php');
 ?>

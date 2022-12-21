@@ -44,57 +44,29 @@
 			<h3 class="text-3xl font-bold">Let's Do It</h3>
 			<div class="todo p-5 rounded-2xl mt-5">
 				<h3 class="text-2xl font-bold">To Do List</h3>
+				<?php 
+					include 'koneksi.php';
+					$query = mysqli_query($conn, "SELECT * FROM todo WHERE status = 0");
+					while($data = mysqli_fetch_array($query)){
+				?>
 				<div class="task mt-5 p-3 rounded-2xl bg-black">
 					<div class="flex">
 						<input type="checkbox" class="check inline-block cursor-pointer" />
 						<p class="inline-block ml-3">
-							Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
+							<?php echo $data['description']; ?>
 						</p>
 					</div>
 					<div class="flex">
-						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">Done</p>
-						<p class="status ml-3 p-2 rounded-2xl text-center inline-block">3-12-2022</p>
+						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">
+							<?php if($data['status'] == 1){
+								echo "Done";
+							} else {
+								echo "On Going";
+							} ?>
+						</p>
 					</div>
 				</div>
-				<div class="task mt-5 p-3 rounded-2xl bg-black">
-					<div class="flex">
-						<input type="checkbox" class="check inline-block cursor-pointer" />
-						<p class="inline-block ml-3">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
-					</div>
-					<div class="flex">
-						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-						<p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-					</div>
-				</div>
-				<div class="task mt-5 p-3 rounded-2xl bg-black">
-					<div class="flex">
-						<input type="checkbox" class="check inline-block cursor-pointer" />
-						<p class="inline-block ml-3">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
-					</div>
-					<div class="flex">
-						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-						<p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-					</div>
-				</div>
-				<div class="task mt-5 p-3 rounded-2xl bg-black">
-					<div class="flex">
-						<input type="checkbox" class="check inline-block cursor-pointer" />
-						<p class="inline-block ml-3">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
-					</div>
-					<div class="flex">
-						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-						<p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-					</div>
-				</div>
-				<div class="task mt-5 p-3 rounded-2xl bg-black">
-					<div class="flex">
-						<input type="checkbox" class="check inline-block cursor-pointer" />
-						<p class="inline-block ml-3">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.</p>
-					</div>
-					<div class="flex">
-						<p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-						<p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-					</div>
+				<?php } ?>
 				</div>
 				<button class="addList my-3 p-3 rounded-2xl font-semibold hover:font-bold" onclick="window.location.href='toDo/input-todolist.php'">Add List</button>
 			</div>
