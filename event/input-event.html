@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Create New Event</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="container">
-            <button class="back">
-                Back
-            </button>
+	<head>
+		<title>Create New Event</title>
+		<link rel="stylesheet" href="input-event-style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<button class="back" onclick="window.location.href='../event/event.php'">Back</button>
 
-            <p class="title">
-                Create New Event
-            </p>
-            
-            <form action="#" method="post">
-                <div class="label">
-                    Name
-                </div>
-                <input type="text" class="input" name="name">
+			<p class="title">Create New Event</p>
 
-                <div class="label">
-                    Date
-                </div>
-                <input type="date" class="input" name="date">
+			<form action="#" method="post">
+				<div class="label">Name</div>
+				<input type="text" class="input" name="name" />
 
-                <div class="label">
-                    Time
-                </div>
-                <input type="time" class="input" name="time">
+				<div class="label">Date</div>
+				<input type="date" class="input" name="date" />
 
-                <div class="label">
-                    Status
-                </div>
-                <input type="text" class="input" name="status">
-            </form>
-        </div>
-    </body>
+				<div class="label">Time</div>
+				<input type="time" class="input" name="time" />
+
+				<div class="label">Status</div>
+				<input type="text" class="input" name="status" />
+			</form>
+		</div>
+	</body>
 </html>

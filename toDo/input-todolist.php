@@ -13,7 +13,7 @@
 <body>
 	<div class="container mt-5 mb-3">
 		<div class="d-gip gap-2 col-6 mx-auto">
-			<a href="../index.html" class="btn-back btn">Back</a>
+			<a href="../index.php" class="btn-back btn">Back</a>
 		</div>
 	</div>
 	<div class="container">
