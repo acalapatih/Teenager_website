@@ -1,3 +1,36 @@
 .card-header {
     background-color: #9DF6FC;
-}
+  }
+  
+  .card-body {
+    background-color: #394F89;
+  }
+  
+  label {
+    color: #E0FCFD;
+  }
+  
+  .btn-submit, .btn-submit:hover {
+    font-weight: bold;
+    padding: 4px 2px;
+    width: 100%;
+    background-color: #9DF6FC;
+    color: #394F89;
+  }
+  
+  .btn-submit:not(:disabled):not(:disabled):active {
+    background-color: #9DF6FC;
+    color: #394F89;
+  } 
+  
+  .btn-back, .btn-back:hover {
+    padding: 4px 2px;
+    width: 20%;
+    background-color: #394F89;
+    color: #9DF6FC;
+  }
+  
+  .btn-back:not(:disabled):not(:disabled):active {
+    background-color: #394F89;
+    color: #9DF6FC;
+  }
