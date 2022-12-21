@@ -27,9 +27,13 @@
 						<label for="description" class="form-label">Task Description</label>
 						<textarea required class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Leave some descriptions for the task."></textarea>
 					</div>
-					<div class="mb-3 form-check">
+					<!-- <div class="mb-3 form-check">
 						<input type="checkbox" class="form-check-input" id="status" name="status" />
 						<label class="form-check-label" for="status" name="status">Done</label>
+					</div> -->
+					<div class="mb-3">
+						<label for="deadline_title" class="form-label" name="deadline_title"">Deadline</label>
+						<input name="date" type="date" class="form-control" id="deadline_title"/>
 					</div>
 					<button type="submit" class="btn-submit btn">Submit</button>
 				</form>

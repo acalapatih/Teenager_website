@@ -47,86 +47,43 @@
             <h3 class="text-3xl font-bold">Let's Do It</h3>
             <div class="todo p-5 rounded-2xl mt-5">
                 <h3 class="text-2xl font-bold">Assignment</h3>
-                <div class="task mt-5 p-3 rounded-2xl bg-black">
-                    <div>
-                        <p class="subject font-semibold text-xl my-2">Subject</p>
-                        <div class=" flex">
-                            <input type="checkbox" class="check inline-block cursor-pointer" />
-                            <p class="inline-block ml-3">
-                                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem
-                                ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <p class="status ml-6 p-2 rounded-2xl text-center inline-block">Done</p>
-                        <p class="status ml-3 p-2 rounded-2xl text-center inline-block">3-12-2022</p>
-                    </div>
-                </div>
-                <div class="task mt-5 p-3 rounded-2xl bg-black">
-                    <div>
-                        <p class="subject font-semibold text-xl my-2">Subject</p>
-                        <div class=" flex">
-                            <input type="checkbox" class="check inline-block cursor-pointer" />
-                            <p class="inline-block ml-3">
-                                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem
-                                ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-                        <p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-                    </div>
-                </div>
-                <div class="task mt-5 p-3 rounded-2xl bg-black">
-                    <div>
-                        <p class="subject font-semibold text-xl my-2">Subject</p>
-                        <div class=" flex">
-                            <input type="checkbox" class="check inline-block cursor-pointer" />
-                            <p class="inline-block ml-3">
-                                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem
-                                ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-                        <p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-                    </div>
-                </div>
-                <div class="task mt-5 p-3 rounded-2xl bg-black">
-                    <div>
-                        <p class="subject font-semibold text-xl my-2">Subject</p>
-                        <div class=" flex">
-                            <input type="checkbox" class="check inline-block cursor-pointer" />
-                            <p class="inline-block ml-3">
-                                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem
-                                ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-                        <p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-                    </div>
-                </div>
-                <div class="task mt-5 p-3 rounded-2xl bg-black">
-                    <div>
-                        <p class="subject font-semibold text-xl my-2">Subject</p>
-                        <div class=" flex">
-                            <input type="checkbox" class="check inline-block cursor-pointer" />
-                            <p class="inline-block ml-3">
-                                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem
-                                ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <p class="status ml-6 p-2 rounded-2xl text-center inline-block">On Going</p>
-                        <p class="status ml-3 p-2 rounded-2xl text-center inline-block">5-12-2022</p>
-                    </div>
-                </div>
+                <?php
+					include('../koneksi.php');
+					$query = mysqli_query($conn, "SELECT * FROM assignment") or die(mysqli_error($conn));
+
+					if (mysqli_num_rows($query) == 0) {
+						echo '<tr><td>Tidak ada data!</td></tr>';
+					}
+
+					while($data = mysqli_fetch_assoc($query)) {
+						$no = $data['id_assignment'];
+						echo '<div class="task mt-5 p-3 rounded-2xl bg-black">
+                        <div>
+                            <p class="subject font-semibold text-xl my-2">'.$data['subject'].'</p>
+                            <div class=" flex">
+                                <input type="checkbox" class="check inline-block cursor-pointer" />
+                                <p class="inline-block ml-3">
+                                    '.$data['description'].'
+                                </p>
+                            </div>
+                        </div>';
+
+							// if ($data['status'] == 1) {
+							// 	$status = "Done";
+							// } else if ($data['status'] == 0) {
+							// 	$status = "On Progress";
+							// }
+
+                            // <p name="status" class="status ml-6 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
+
+                        echo '<div class="flex my-1">
+                            <p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['deadline'].'</p>
+                            <a href="hapusAssignment.php?id=' . $data['id_assignment'] . '" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+							</div>
+						</div>';
+						$no++;
+					}
+				?>
                 <button class="addList my-3 p-3 rounded-2xl font-semibold hover:font-bold"
                     onclick="window.location.href='../assignment/input-assignment.php'">Add List</button>
             </div>

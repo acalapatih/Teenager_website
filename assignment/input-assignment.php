@@ -25,23 +25,23 @@
 					<h5 class="card-title">Add Assignment</h5>
 				</div>
 				<div class="card-body">
-					<form action="">
+					<form action="prosesInput_assignment.php" method="post">
 						<div class="mb-3">
 							<label for="subject_title" class="form-label" name="subject_title"">Subject</label>
-							<input type="text" class="form-control" id="subject_title" placeholder="What Is The Subject..."/>
+							<input name="subject" type="text" class="form-control" id="subject_title" placeholder="What Is The Subject..."/>
 						</div>
 						<div class="mb-3">
 							<label for="description" class="form-label">Assignment Description</label>
-							<textarea class="form-control" name="assignment_title" id="assignment_title" cols="30" rows="10" placeholder="Leave some descriptions for the assignment."></textarea>
+							<textarea class="form-control" name="description" id="assignment_title" cols="30" rows="10" placeholder="Leave some descriptions for the assignment."></textarea>
 						</div>
                         <div class="mb-3">
 							<label for="deadline_title" class="form-label" name="deadline_title"">Assignment Deadline</label>
-							<input type="date" class="form-control" id="deadline_title"/>
+							<input type="date" name="date" class="form-control" id="deadline_title"/>
 						</div>
-						<div class="mb-3 form-check">
+						<!-- <div class="mb-3 form-check">
 							<input type="checkbox" class="form-check-input" id="done" name="done" />
 							<label class="form-check-label" for="done" name="done">Done</label>
-						</div>
+						</div> -->
 						<button type="submit" class="btn-submit btn">Submit</button>
 					</form>
 				</div>

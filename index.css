@@ -37,6 +37,20 @@
 	background-color: #e0fcfd;
 }
 
+#centerSection .todo .delete {
+	color: #e0fcfd;
+	background-color: #ff6860;
+}
+
+#centerSection .todo .updateStatus {
+	color: #e0fcfd;
+	background-color: green;
+}
+
+#centerSection .todo .task {
+	background-color: #223054;
+}
+
 .task p {
 	text-align: justify;
 }

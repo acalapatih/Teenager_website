@@ -1,9 +1,10 @@
 <?php
 include '../koneksi.php';
 $description = $_POST['description'];
-$status = isset($_POST['status']) ? 1 : 0;
+$date = $_POST['date'];
+// $status = isset($_POST['status']) ? 1 : 0;
 
-mysqli_query($conn, "INSERT INTO todo VALUES('','$description','$status')");
+mysqli_query($conn, "INSERT INTO todo VALUES('','$description','$date','')");
 
-header("location:../index.html");
+header("location:../index.php");
 ?>
