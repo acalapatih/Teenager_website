@@ -7,5 +7,5 @@ $date = $_POST['date'];
 
 mysqli_query($conn, "INSERT INTO assignment VALUES('','$subject','$description','$date','')");
 
-header("location:../index.php");
+header("location:assignment.php");
 ?>

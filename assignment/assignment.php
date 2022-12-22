@@ -49,7 +49,7 @@
                 <h3 class="text-2xl font-bold">Assignment</h3>
                 <?php
 					include('../koneksi.php');
-					$query = mysqli_query($conn, "SELECT * FROM assignment") or die(mysqli_error($conn));
+					$query = mysqli_query($conn, "SELECT * FROM assignment ORDER BY id_assignment DESC") or die(mysqli_error($conn));
 
 					if (mysqli_num_rows($query) == 0) {
 						echo '<tr><td>Tidak ada data!</td></tr>';
@@ -62,9 +62,9 @@
                             <p class="subject font-semibold text-xl my-2">'.$data['subject'].'</p>
                             <div class=" flex">
                                 <p class="inline-block ml-3">
-                                    '.$data['description'].'
+                                    '.$data['description']. '
                                 </p>
-                                <button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
+                                <a href="edit_assignment.php?id='.$data['id_assignment'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
                             </div>
                         </div>';
 

@@ -46,7 +46,7 @@
 				<h3 class="text-2xl font-bold">To Do List</h3>
 				<?php
 					include('koneksi.php');
-					$query = mysqli_query($conn, "SELECT * FROM todo") or die(mysqli_error($conn));
+					$query = mysqli_query($conn, "SELECT * FROM todo ORDER BY id_toDo DESC") or die(mysqli_error($conn));
 
 					if (mysqli_num_rows($query) == 0) {
 						echo '<tr><td>Tidak ada data!</td></tr>';
@@ -59,7 +59,7 @@
 								<p name="description" class="inline-block ml-3">
 									'.$data['description'].'
 								</p>
-								<button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
+								<a href="toDo/edit_toDo.php?id='.$data['id_toDo'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
 							</div>';
 							if ($data['status'] == 1) {
 								$status = "Done";
@@ -70,7 +70,7 @@
 							echo '<div class="flex my-1">
 							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">'.$status.'</p>
 								<p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['date'].'</p>
-								<a href="hapus.php?id='.$data['id_toDo'].'" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+								<a href="toDo/hapus.php?id='.$data['id_toDo'].'" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
 							</div>
 						</div>';
 						$no++;

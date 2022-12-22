@@ -46,7 +46,7 @@
         <h3 class="text-2xl font-bold">Event</h3>
         <?php
 					include('../koneksi.php');
-					$query = mysqli_query($conn, "SELECT * FROM event") or die(mysqli_error($conn));
+					$query = mysqli_query($conn, "SELECT * FROM event ORDER BY id_event DESC") or die(mysqli_error($conn));
 
 					if (mysqli_num_rows($query) == 0) {
 						echo '<tr><td>Tidak ada data!</td></tr>';
@@ -57,9 +57,9 @@
 						echo '<div class="task mt-5 p-3 rounded-2xl bg-black">
             <div>
               <p class="subject font-semibold text-xl my-2 inline-block">
-                '.$data['subject'].'
+                '.$data['subject']. '
               </p>
-              <button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
+             <a href="edit_event.php?id='.$data['id_event'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
               <div class=" flex">
                 <p class="inline-block ml-3">
                   '.$data['description'].'

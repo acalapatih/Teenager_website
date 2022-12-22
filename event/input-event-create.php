@@ -26,5 +26,4 @@
 
     mysqli_query($conn, "INSERT INTO event VALUES('','$name', '$description', '$date','$time','')");
 
-    header("location:../index.php");
-?>
+    header("location:event.php");
