@@ -7,6 +7,10 @@
 	background-color: #394f89;
 }
 
+#leftSection .title .list {
+	color: #e0fcfd;
+}
+
 #leftSection .category:hover {
 	color: #e0fcfd;
 	background-color: #394f89;

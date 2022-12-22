@@ -33,9 +33,9 @@
         <img src="../assets/assignment.png" class="w-1/12 inline-block" />
         <h3 class="inline-block text-lg ml-2 cursor-pointer">Assignment</h3>
       </div>
-      <div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='event.php'">
+      <div class="title flex p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='event.php'">
         <img src="../assets/event.png" class="w-1/12 inline-block" />
-        <h3 class="inline-block text-lg ml-2 cursor-pointer">Event</h3>
+        <h3 class="list inline-block text-lg ml-2 cursor-pointer">Event</h3>
       </div>
     </div>
 
@@ -54,47 +54,45 @@
 
 					while($data = mysqli_fetch_assoc($query)) {
 						$no = $data['id_event'];
-						echo '<div class="task mt-5 p-3 rounded-2xl bg-black">
-            <div>
-              <p class="subject font-semibold text-xl my-2 inline-block">
-                '.$data['subject']. '
-              </p>
-             <a href="edit_event.php?id='.$data['id_event'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
-              <div class=" flex">
-                <p class="inline-block ml-3">
-                  '.$data['description'].'
+				?>
+						<div class="task mt-5 p-3 rounded-2xl bg-black">
+              <div>
+                <p class="subject inline-block font-semibold text-xl my-2">
+                    <?php echo $data['subject']; ?>
                 </p>
+                <?php
+                    if ($data['status'] == 0) {
+                ?>
+                <a href="edit_event.php?id=<?php echo $data['id_event']; ?>"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
+                <?php
+                    }
+                ?>
+                <div class=" flex">
+                    <p class="inline-block ml-3">
+                        <?php echo $data['description']; ?>
+                    </p>
+                </div>
               </div>
-            </div>';
-
+							<?php
 							if ($data['status'] == 1) {
 								$status = "Done";
 							} else if ($data['status'] == 0) {
 								$status = "On Going";
 							}
-							
-              // '.$status.'
-              // </p>
+							?>
 
-
-							echo '<div class="flex my-1">
-              <p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
-                <p class="status ml-3 p-2 rounded-2xl text-center inline-block">
-                  '.$data['date'].'
+							<div class="flex my-1">
+							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block"><?php echo "$status"; ?></p>
+								<p class="status ml-3 p-2 rounded-2xl text-center inline-block">
+                  <?php echo $data['date']; ?>
                 </p>
                 <p class="status ml-3 p-2 rounded-2xl text-center inline-block">
-                  '.$data['time'].'
+                <?php echo $data['time']; ?>
                 </p>
-                <a href="hapusEvent.php?id='.$data['id_event'].'" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
-              </div>
-            </div>';
-						if(isset($_GET['submit'])) {
-							$var = $_GET['check'];
-							if(isset($var)) {
-			                	$sql = "UPDATE event SET status=1 WHERE id_event=$no";
-								$conn->query($sql);
-							}
-						}
+								<a href="hapusEvent.php?id=<?php echo $data['id_event']; ?>" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+							</div>
+						</div>
+				<?php
 						$no++;
 					}
 				?>

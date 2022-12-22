@@ -25,9 +25,9 @@
 				<h2 class="text-2xl px-10 font-semibold underline text-white">Teenager</h2>
 				<h4 class="text-xs px-10 font-semibold italic text-white">Teen Task Manager</h4>
 			</div>
-			<div class="category flex mt-8 p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='index.php'">
+			<div class="title flex mt-8 p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='index.php'">
 				<img src="assets\to-do-list.png" class="w-1/12 inline-block" />
-				<h3 class="inline-block text-lg ml-2 cursor-pointer">To Do List</h3>
+				<h3 class="list inline-block text-lg ml-2 cursor-pointer">To Do List</h3>
 			</div>
 			<div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='assignment/assignment.php'">
 				<img src="assets\assignment.png" class="w-1/12 inline-block" />
@@ -54,25 +54,35 @@
 
 					while($data = mysqli_fetch_assoc($query)) {
 						$no = $data['id_toDo'];
-						echo '<div class="task mt-5 p-3 rounded-2xl">
+				?>
+						<div class="task mt-5 p-3 rounded-2xl">
 							<div class="flex">
 								<p name="description" class="inline-block ml-3">
-									'.$data['description'].'
+									<?php echo $data['description']; ?>
 								</p>
-								<a href="toDo/edit_toDo.php?id='.$data['id_toDo'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
-							</div>';
+								<?php
+									if ($data['status'] == 0) {
+								?>
+								<a href="toDo/edit_toDo.php?id=<?php echo $data['id_toDo']; ?>"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
+								<?php
+									}
+								?>
+							</div>
+							<?php
 							if ($data['status'] == 1) {
 								$status = "Done";
 							} else if ($data['status'] == 0) {
 								$status = "On Going";
 							}
+							?>
 
-							echo '<div class="flex my-1">
-							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">'.$status.'</p>
-								<p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['date'].'</p>
-								<a href="toDo/hapus.php?id='.$data['id_toDo'].'" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+							<div class="flex my-1">
+							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block"><?php echo "$status"; ?></p>
+								<p class="status ml-3 p-2 rounded-2xl text-center inline-block"><?php echo $data['date']; ?></p>
+								<a href="toDo/hapus.php?id=<?php echo $data['id_toDo']; ?>" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
 							</div>
-						</div>';
+						</div>
+				<?php
 						$no++;
 					}
 				?>

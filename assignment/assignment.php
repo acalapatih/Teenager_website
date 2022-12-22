@@ -30,10 +30,10 @@
                 <img src="../assets/to-do-list.png" class="w-1/12 inline-block" />
                 <h3 class="inline-block text-lg ml-2 cursor-pointer">To Do List</h3>
             </div>
-            <div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer"
+            <div class="title flex p-3 px-10 rounded-r-md font-semibold cursor-pointer"
                 onclick="window.location.href='assignment.php'">
                 <img src="../assets/assignment.png" class="w-1/12 inline-block" />
-                <h3 class="inline-block text-lg ml-2 cursor-pointer">Assignment</h3>
+                <h3 class="list inline-block text-lg ml-2 cursor-pointer">Assignment</h3>
             </div>
             <div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer"
                 onclick="window.location.href='../event/event.php'">
@@ -57,29 +57,40 @@
 
 					while($data = mysqli_fetch_assoc($query)) {
 						$no = $data['id_assignment'];
-						echo '<div class="task mt-5 p-3 rounded-2xl bg-black">
+				?>
+						<div class="task mt-5 p-3 rounded-2xl bg-black">
                         <div>
-                            <p class="subject font-semibold text-xl my-2">'.$data['subject'].'</p>
+                            <p class="subject inline-block font-semibold text-xl my-2">
+                                <?php echo $data['subject']; ?>
+                            </p>
+                            <?php
+                                if ($data['status'] == 0) {
+                            ?>
+                            <a href="edit_assignment.php?id=<?php echo $data['id_assignment']; ?>"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
+                            <?php
+                                }
+                            ?>
                             <div class=" flex">
                                 <p class="inline-block ml-3">
-                                    '.$data['description']. '
+                                    <?php echo $data['description']; ?>
                                 </p>
-                                <a href="edit_assignment.php?id='.$data['id_assignment'].'"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
                             </div>
-                        </div>';
-
+                        </div>
+							<?php
 							if ($data['status'] == 1) {
 								$status = "Done";
 							} else if ($data['status'] == 0) {
 								$status = "On Going";
 							}
+							?>
 
-                        echo '<div class="flex my-1">
-                            <p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
-                            <p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['deadline'].'</p>
-                            <a href="hapusAssignment.php?id=' . $data['id_assignment'] . '" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+							<div class="flex my-1">
+							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block"><?php echo "$status"; ?></p>
+								<p class="status ml-3 p-2 rounded-2xl text-center inline-block"><?php echo $data['deadline']; ?></p>
+								<a href="hapusAssignment.php?id=<?php echo $data['id_assignment']; ?>" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
 							</div>
-						</div>';
+						</div>
+				<?php
 						$no++;
 					}
 				?>
