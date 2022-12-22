@@ -21,13 +21,13 @@ if(isset($_GET['id'])){
 
  	if($del){
 
- 	echo 'Data berhasil di hapus! ';	//Pesan jika proses hapus berhasil
- 	echo '<a href=""location:../index.php"">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+ 	echo 'Data berhasil dihapus! ';	//Pesan jika proses hapus berhasil
+ 	echo '<a href="assignment.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
 
  	}else{
 
  	echo 'Gagal menghapus data! ';	//Pesan jika proses hapus gagal
- 	echo '<a href="../index.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+ 	echo '<a href="assignment.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
 
  	}
 

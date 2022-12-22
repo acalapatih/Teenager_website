@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
 
  	}
 
- 	}
+}
 
 }else{
     echo '<script>window.history.back()</script>';
