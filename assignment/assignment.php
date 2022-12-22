@@ -61,22 +61,21 @@
                         <div>
                             <p class="subject font-semibold text-xl my-2">'.$data['subject'].'</p>
                             <div class=" flex">
-                                <input type="checkbox" class="check inline-block cursor-pointer" />
                                 <p class="inline-block ml-3">
                                     '.$data['description'].'
                                 </p>
+                                <button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
                             </div>
                         </div>';
 
-							// if ($data['status'] == 1) {
-							// 	$status = "Done";
-							// } else if ($data['status'] == 0) {
-							// 	$status = "On Progress";
-							// }
-
-                            // <p name="status" class="status ml-6 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
+							if ($data['status'] == 1) {
+								$status = "Done";
+							} else if ($data['status'] == 0) {
+								$status = "On Going";
+							}
 
                         echo '<div class="flex my-1">
+                            <p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
                             <p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['deadline'].'</p>
                             <a href="hapusAssignment.php?id=' . $data['id_assignment'] . '" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
 							</div>

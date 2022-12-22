@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 07:17 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 22, 2022 at 02:23 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,8 +31,9 @@ CREATE TABLE `assignment` (
   `id_assignment` int(11) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `deadline` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `deadline` date NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,10 +43,12 @@ CREATE TABLE `assignment` (
 
 CREATE TABLE `event` (
   `id_event` int(11) NOT NULL,
+  `subject` varchar(30) NOT NULL,
+  `description` text NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -56,8 +59,16 @@ CREATE TABLE `event` (
 CREATE TABLE `todo` (
   `id_toDo` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `date` date NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `todo`
+--
+
+INSERT INTO `todo` (`id_toDo`, `description`, `date`, `status`) VALUES
+(19, 'UAS Platform', '2022-12-22', 0);
 
 --
 -- Indexes for dumped tables
@@ -89,19 +100,19 @@ ALTER TABLE `todo`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `id_assignment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_assignment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `todo`
 --
 ALTER TABLE `todo`
-  MODIFY `id_toDo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_toDo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

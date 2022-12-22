@@ -56,34 +56,23 @@
 						$no = $data['id_toDo'];
 						echo '<div class="task mt-5 p-3 rounded-2xl">
 							<div class="flex">
-								<form method="get">
-									<input name="check" type="checkbox" class="check inline-block cursor-pointer" />
-									<p name="description" class="inline-block ml-3">
-										'.$data['description'].'
-									</p>
-								</form>
+								<p name="description" class="inline-block ml-3">
+									'.$data['description'].'
+								</p>
+								<button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
 							</div>';
-							// <button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Update</button>
 							if ($data['status'] == 1) {
 								$status = "Done";
 							} else if ($data['status'] == 0) {
 								$status = "On Going";
 							}
-							
-							// <p name="status" class="status ml-6 p-2 rounded-2xl text-center inline-block">'.$status.'</p>
 
 							echo '<div class="flex my-1">
+							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">'.$status.'</p>
 								<p class="status ml-3 p-2 rounded-2xl text-center inline-block">'.$data['date'].'</p>
 								<a href="hapus.php?id='.$data['id_toDo'].'" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
 							</div>
 						</div>';
-						if(isset($_GET['submit'])) {
-							$var = $_GET['check'];
-							if(isset($var)) {
-			                	$sql = "UPDATE todo SET status=1 WHERE id_toDo=$no";
-								$conn->query($sql);
-							}
-						}
 						$no++;
 					}
 				?>

@@ -56,11 +56,11 @@
 						$no = $data['id_event'];
 						echo '<div class="task mt-5 p-3 rounded-2xl bg-black">
             <div>
-              <p class="subject font-semibold text-xl my-2">
+              <p class="subject font-semibold text-xl my-2 inline-block">
                 '.$data['subject'].'
               </p>
+              <button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button>
               <div class=" flex">
-                <input type="checkbox" class="check inline-block cursor-pointer" />
                 <p class="inline-block ml-3">
                   '.$data['description'].'
                 </p>
@@ -73,12 +73,12 @@
 								$status = "On Going";
 							}
 							
-              // <p class="status ml-6 p-2 rounded-2xl text-center inline-block">
               // '.$status.'
               // </p>
 
 
 							echo '<div class="flex my-1">
+              <p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block">' . $status . '</p>
                 <p class="status ml-3 p-2 rounded-2xl text-center inline-block">
                   '.$data['date'].'
                 </p>
