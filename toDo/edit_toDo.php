@@ -21,12 +21,12 @@ if(isset($_GET['id'])){
  	if($update){
 
  	echo 'Data berhasil diubah! ';	//Pesan jika proses hapus berhasil
- 	echo '<a href="../index.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+ 	echo '<a href="todo.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
 
  	}else{
 
  	echo 'Gagal ubah data! ';	//Pesan jika proses hapus gagal
- 	echo '<a href="../index.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+ 	echo '<a href="todo.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
 
  	}
 

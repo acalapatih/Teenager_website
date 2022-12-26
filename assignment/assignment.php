@@ -26,18 +26,15 @@
                 <h2 class="text-2xl px-10 font-semibold underline text-white">Teenager</h2>
                 <h4 class="text-xs px-10 font-semibold italic text-white">Teen Task Manager</h4>
             </div>
-            <div class="category flex mt-8 p-3 px-10 rounded-r-md font-semibold cursor-pointer"
-                onclick="window.location.href='../index.php'">
+            <div class="category flex mt-8 p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='../toDo/todo.php'">
                 <img src="../assets/to-do-list.png" class="w-1/12 inline-block" />
                 <h3 class="inline-block text-lg ml-2 cursor-pointer">To Do List</h3>
             </div>
-            <div class="title flex p-3 px-10 rounded-r-md font-semibold cursor-pointer"
-                onclick="window.location.href='assignment.php'">
+            <div class="title flex p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='assignment.php'">
                 <img src="../assets/assignment.png" class="w-1/12 inline-block" />
                 <h3 class="list inline-block text-lg ml-2 cursor-pointer">Assignment</h3>
             </div>
-            <div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer"
-                onclick="window.location.href='../event/event.php'">
+            <div class="category flex p-3 px-10 rounded-r-md font-semibold cursor-pointer" onclick="window.location.href='../event/event.php'">
                 <img src="../assets/event.png" class="w-1/12 inline-block" />
                 <h3 class="inline-block text-lg ml-2 cursor-pointer">Event</h3>
             </div>
@@ -49,27 +46,32 @@
             <div class="todo p-5 rounded-2xl mt-5">
                 <h3 class="text-2xl font-bold">Assignment</h3>
                 <?php
-					include('../koneksi.php');
-					$query = mysqli_query($conn, "SELECT * FROM assignment ORDER BY id_assignment DESC") or die(mysqli_error($conn));
+                session_start();
+                if ($_SESSION['status'] != "login") {
+                    header("location:../index.php");
+                }
+                $id_user = $_SESSION['id_user'];
+                include('../koneksi.php');
+                $query = mysqli_query($conn, "SELECT * FROM assignment WHERE id_user = '$id_user' ORDER BY id_assignment DESC") or die(mysqli_error($conn));
 
-					if (mysqli_num_rows($query) == 0) {
-						echo '<tr><td>Tidak ada data!</td></tr>';
-					}
+                if (mysqli_num_rows($query) == 0) {
+                    echo '<tr><td>Tidak ada data!</td></tr>';
+                }
 
-					while($data = mysqli_fetch_assoc($query)) {
-						$no = $data['id_assignment'];
-				?>
-						<div class="task mt-5 p-3 rounded-2xl bg-black">
+                while ($data = mysqli_fetch_assoc($query)) {
+                    $no = $data['id_assignment'];
+                ?>
+                    <div class="task mt-5 p-3 rounded-2xl bg-black">
                         <div>
                             <p class="subject inline-block font-semibold text-xl my-2">
                                 <?php echo $data['subject']; ?>
                             </p>
                             <?php
-                                if ($data['status'] == 0) {
+                            if ($data['status'] == 0) {
                             ?>
-                            <a href="edit_assignment.php?id=<?php echo $data['id_assignment']; ?>"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
+                                <a href="edit_assignment.php?id=<?php echo $data['id_assignment']; ?>"><button name="submit" value="true" class="updateStatus ml-2 p-1 rounded-2xl text-center inline-block">Finish</button></a>
                             <?php
-                                }
+                            }
                             ?>
                             <div class=" flex">
                                 <p class="inline-block ml-3">
@@ -77,26 +79,25 @@
                                 </p>
                             </div>
                         </div>
-							<?php
-							if ($data['status'] == 1) {
-								$status = "Done";
-							} else if ($data['status'] == 0) {
-								$status = "On Going";
-							}
-							?>
+                        <?php
+                        if ($data['status'] == 1) {
+                            $status = "Done";
+                        } else if ($data['status'] == 0) {
+                            $status = "On Going";
+                        }
+                        ?>
 
-							<div class="flex my-1">
-							<p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block"><?php echo "$status"; ?></p>
-								<p class="status ml-3 p-2 rounded-2xl text-center inline-block"><?php echo $data['deadline']; ?></p>
-								<a href="hapusAssignment.php?id=<?php echo $data['id_assignment']; ?>" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
-							</div>
-						</div>
-				<?php
-						$no++;
-					}
-				?>
-                <button class="addList my-3 p-3 rounded-2xl font-semibold hover:font-bold"
-                    onclick="window.location.href='../assignment/input-assignment.php'">Add List</button>
+                        <div class="flex my-1">
+                            <p name="status" class="status ml-4 p-2 rounded-2xl text-center inline-block"><?php echo "$status"; ?></p>
+                            <p class="status ml-3 p-2 rounded-2xl text-center inline-block"><?php echo $data['deadline']; ?></p>
+                            <a href="hapusAssignment.php?id=<?php echo $data['id_assignment']; ?>" class="delete ml-3 p-2 rounded-2xl text-center inline-block cursor-pointer hover:font-semibold">Delete</a>
+                        </div>
+                    </div>
+                <?php
+                    $no++;
+                }
+                ?>
+                <button class="addList my-3 p-3 rounded-2xl font-semibold hover:font-bold" onclick="window.location.href='../assignment/input-assignment.php'">Add List</button>
             </div>
         </div>
 
@@ -104,8 +105,8 @@
             <div class="user flex py-2 mx-8">
                 <img src="../assets/user.png" class="inline-block my-3 rounded-xl" />
                 <div class="inline-block">
-                    <h3 class="ml-3 text-xl font-semibold">Wat Sit To Ya</h3>
-                    <p class="ml-3 font-semibold">Mahasiswa</p>
+                    <h3 class="ml-3 text-xl font-semibold"><?php echo $_SESSION['username']; ?></h3>
+                    <a class="ml-3 font-semibold" href="../logout.php">Logout</a>
                 </div>
             </div>
             <div class="calendar mt-6">
