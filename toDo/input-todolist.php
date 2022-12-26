@@ -15,7 +15,7 @@
 <body>
 	<div class="container mt-5 mb-3">
 		<div class="d-gip gap-2 col-6 mx-auto">
-			<a href="../index.php" class="btn-back btn">Back</a>
+			<a href="todo.php" class="btn-back btn">Back</a>
 		</div>
 	</div>
 	<div class="container">
@@ -35,7 +35,7 @@
 					</div> -->
 					<div class="mb-3">
 						<label for="deadline_title" class="form-label" name="deadline_title"">Deadline</label>
-						<input name="date" type="date" class="form-control" id="deadline_title"/>
+						<input name="date" type="date" class="form-control" id="deadline_title" required/>
 					</div>
 					<button type="submit" class="btn-submit btn">Submit</button>
 				</form>

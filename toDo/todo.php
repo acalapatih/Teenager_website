@@ -20,6 +20,13 @@
 </head>
 
 <body class="bg-gray-200">
+	<?php
+		session_start();
+		if($_SESSION['status']!="login"){
+			header("location:../index.php");
+		}
+		$id_user = $_SESSION['id_user'];
+	?>
 	<div id="main" class="flex m-16 rounded-3xl">
 		<div id="leftSection" class="inline-block my-10 w-3/12">
 			<div class="title rounded-r-2xl p-2">
@@ -41,17 +48,11 @@
 		</div>
 
 		<div id="centerSection" class="inline-block p-8">
-			<h1 class="text-xl mt-2 opacity-50">Hello, Dude</h1>
+			<h1 class="text-xl mt-2 opacity-50">Hello, <?php echo $_SESSION['username']; ?></h1>
 			<h3 class="text-3xl font-bold">Let's Do It</h3>
 			<div class="todo p-5 rounded-2xl mt-5">
 				<h3 class="text-2xl font-bold">To Do List</h3>
 				<?php
-				session_start();
-				if($_SESSION['status']!="login"){
-					header("location:../index.php");
-				}
-				$id_user = $_SESSION['id_user'];
-				
 				include('../koneksi.php');
 				$query = mysqli_query($conn, "SELECT * FROM todo WHERE id_user = '$id_user' ORDER BY id_toDo DESC") or die(mysqli_error($conn));
 

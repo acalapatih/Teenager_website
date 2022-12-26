@@ -33,17 +33,17 @@
                 <form action="proses_register.php" method="post" class="text-center">
                     <div class="my-3">
                         <label for="username">Username</label></br>
-                        <input type="text" name="username" id="username" class="rounded-2xl w-56 p-1"></br>
+                        <input type="text" name="username" id="username" class="rounded-2xl w-56 p-1" placeholder="Username" required></br>
                     </div>
 
                     <div class="my-3">
                         <label for="email">Email</label></br>
-                        <input type="email" name="email" id="email" class="rounded-2xl w-56 p-1"></br>
+                        <input type="email" name="email" id="email" class="rounded-2xl w-56 p-1" placeholder="Email" required></br>
                     </div>
 
                     <div class="my-3">
                         <label for="password">Password</label></br>
-                        <input type="password" name="password" id="password" class="rounded-2xl w-56 p-1"></br>
+                        <input type="password" name="password" id="password" maxlength="8" class="rounded-2xl w-56 p-1" placeholder="Password" required></br>
                     </div>
 
                     <p>
@@ -51,7 +51,7 @@
                         <a href="index.php" class="italic underline my-3 hover:font-semibold">Login</a></br>
                     </p>
 
-                    <button type="submit" name="submit" class="mt-3 rounded-2xl p-2 w-20 bg-white hover:font-semibold">Submit</button>
+                    <button type="submit" name="submit" class="mt-3 rounded-2xl p-2 w-20 bg-white hover:font-semibold">Register</button>
                 </form>
             </div>
 		</div>

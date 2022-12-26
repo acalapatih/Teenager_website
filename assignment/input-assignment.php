@@ -30,15 +30,15 @@
 					<form action="prosesInput_assignment.php" method="post">
 						<div class="mb-3">
 							<label for="subject_title" class="form-label" name="subject_title"">Subject</label>
-							<input name="subject" type="text" class="form-control" id="subject_title" placeholder="What Is The Subject..."/>
+							<input name="subject" type="text" class="form-control" id="subject_title" placeholder="What Is The Subject..." required/>
 						</div>
 						<div class="mb-3">
 							<label for="description" class="form-label">Assignment Description</label>
-							<textarea class="form-control" name="description" id="assignment_title" cols="30" rows="10" placeholder="Leave some descriptions for the assignment."></textarea>
+							<textarea class="form-control" name="description" id="assignment_title" cols="30" rows="10" placeholder="Leave some descriptions for the assignment." required></textarea>
 						</div>
                         <div class="mb-3">
 							<label for="deadline_title" class="form-label" name="deadline_title"">Assignment Deadline</label>
-							<input type="date" name="date" class="form-control" id="deadline_title"/>
+							<input type="date" name="date" class="form-control" id="deadline_title" required/>
 						</div>
 						<!-- <div class="mb-3 form-check">
 							<input type="checkbox" class="form-check-input" id="done" name="done" />

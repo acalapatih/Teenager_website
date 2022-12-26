@@ -39,12 +39,12 @@
                 <form action="login.php" method="post" class="text-center">
                     <div class="my-3">
                         <label for="email">Email</label></br>
-                        <input type="text" name="email" class="rounded-2xl w-56 p-1" placeholder="Email" />
+                        <input type="text" name="email" class="rounded-2xl w-56 p-1" placeholder="Email" required/>
                     </div>
 
                     <div class="my-3">
                         <label for="password">Password</label></br>
-                        <input type="password" name="password" class="rounded-2xl w-56 p-1" placeholder="Password" />
+                        <input type="password" name="password" maxlength="8" class="rounded-2xl w-56 p-1" placeholder="Password" required/>
                     </div>
 
                     <p class="text-center">

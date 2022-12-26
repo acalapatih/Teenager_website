@@ -20,22 +20,22 @@
                 <div class="label">
                     Name
                 </div>
-                <input type="text" class="input" name="name">
+                <input type="text" class="input" name="name" required>
 
                 <div class="label">
                     Description
                 </div>
-                <textarea class="input" name="description"></textarea>
+                <textarea class="input" name="description" required></textarea>
 
                 <div class="label">
                     Date
                 </div>
-                <input type="date" class="input" name="date" id="deadline_title">
+                <input type="date" class="input" name="date" id="deadline_title" required>
 
                 <div class="label">
                     Time
                 </div>
-                <input type="time" class="input" name="time">
+                <input type="time" class="input" name="time" required>
 
                 <!-- <div class="label">
                     Status
