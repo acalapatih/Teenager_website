@@ -10,7 +10,7 @@ $user = [
 ];
 
 // check if username is already taken
-$check = mysqli_query($conn, "SELECT * FROM user WHERE username='$user[username]'");
+$check = mysqli_query($conn, "SELECT * FROM user WHERE username='$user[username]' OR email='$user[email]'");
 $check = mysqli_num_rows($check);
 if($check > 0) {
   header("location:register.php");
